@@ -5,4 +5,14 @@
 //  Created by MaTooSens on 22/10/2023.
 //
 
-import Foundation
+import AuthenticationInterface
+import DependencyInjection
+
+public struct Dependencies {
+    public static func inject() {
+        Assemblies.inject(
+            type: AuthenticationManagerInterface.self,
+            object: AuthenticationManager()
+        )
+    }
+}
