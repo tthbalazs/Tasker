@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyArtMbA4Vf3UUd_F8srZaz7Rs9NnEz02T8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>728971310759</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.matoosens.Tasker</string>
+	<key>PROJECT_ID</key>
+	<string>tasker-17bdc</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tasker-17bdc.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:728971310759:ios:50eb9735ed0a6cb21bcd82</string>
+</dict>
+</plist>

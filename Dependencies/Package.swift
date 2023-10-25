@@ -14,13 +14,13 @@ let package = Package(
         ),
     ],
     dependencies: [ 
-        .package(path: "DependencyInjection")
+        .package(path: "Authentication")
     ],
     targets: [
         .target(
             name: "Dependencies",
             dependencies: [
-                .product(name: "DependencyInjection", package: "DependencyInjection")
+                .product(name: "Authentication", package: "Authentication")
             ]
         ),
     ]

@@ -21,6 +21,7 @@
 		BD6AE1352AE931EB00D49439 /* AssemblyShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6AE1342AE931EB00D49439 /* AssemblyShared.swift */; };
 		BD6AE1382AE931F900D49439 /* AssemblyMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6AE1362AE931F000D49439 /* AssemblyMocks.swift */; };
 		BD6AE1392AE931FA00D49439 /* AssemblyShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6AE1342AE931EB00D49439 /* AssemblyShared.swift */; };
+		BDBD481F2AE935A800CF0A6F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDBD481E2AE935A800CF0A6F /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		BD6AE1322AE931E400D49439 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		BD6AE1342AE931EB00D49439 /* AssemblyShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyShared.swift; sourceTree = "<group>"; };
 		BD6AE1362AE931F000D49439 /* AssemblyMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyMocks.swift; sourceTree = "<group>"; };
+		BDBD481E2AE935A800CF0A6F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				BD6AE1122AE930AE00D49439 /* TaskerApp.swift */,
 				BD6AE1142AE930AE00D49439 /* ContentView.swift */,
+				BDBD481E2AE935A800CF0A6F /* GoogleService-Info.plist */,
 				BD6AE1312AE931D800D49439 /* Assemblies */,
 				BD6AE1162AE930AF00D49439 /* Assets.xcassets */,
 				BD6AE1182AE930AF00D49439 /* Preview Content */,
@@ -188,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD6AE11A2AE930AF00D49439 /* Preview Assets.xcassets in Resources */,
+				BDBD481F2AE935A800CF0A6F /* GoogleService-Info.plist in Resources */,
 				BD6AE1172AE930AF00D49439 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
