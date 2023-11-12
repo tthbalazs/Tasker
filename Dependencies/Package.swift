@@ -15,7 +15,7 @@ let package = Package(
     ],
     dependencies: [ 
         .package(path: "Authentication"),
-        .package(path: "Repository")
+        .package(path: "Project")
     ],
     targets: [
         .target(
@@ -30,13 +30,13 @@ let package = Package(
                     package: "Authentication"
                 ),
                 .product(
-                    name: "Repository",
-                    package: "Repository"
+                    name: "Project",
+                    package: "Project"
                 ),
                 .product(
-                    name: "RepositoryMocks",
-                    package: "Repository"
-                )
+                    name: "ProjectMocks",
+                    package: "Project"
+                ),
             ]
         ),
     ]

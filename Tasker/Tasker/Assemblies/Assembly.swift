@@ -7,10 +7,12 @@
 
 import Authentication
 import DependencyInjection
+import Project
 
 extension Assemblies {
     static func setupDependencies() {
         Authentication.Dependencies.inject()
+        Project.Dependencies.inject()
     }
 }
 

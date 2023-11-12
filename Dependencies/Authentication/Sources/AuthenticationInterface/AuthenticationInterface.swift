@@ -11,7 +11,7 @@ public protocol AuthenticationManagerInterface {
     var userID: String { get }
     func signOut() throws
     
-    // Manager user
+    // Manage user
     func signUp(withEmail email: String, password: String) async throws
     func signIn(withEmail email: String, password: String) async throws -> AuthenticationDataResult
     func updateEmail(email: String, password: String, newEmail: String) async throws

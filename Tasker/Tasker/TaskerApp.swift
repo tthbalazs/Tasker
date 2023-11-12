@@ -11,9 +11,10 @@ import SwiftUI
 @main
 struct TaskerApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate 
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }

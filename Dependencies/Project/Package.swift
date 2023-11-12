@@ -27,16 +27,17 @@ let package = Package(
     targets: [
         .target(
             name: "ProjectInterface",
-            dependencies: []
+            dependencies: [
+                .product(
+                    name: "Repository",
+                    package: "Repository"
+                )
+            ]
         ),
         .target(
             name: "Project",
             dependencies: [
                 "ProjectInterface",
-                .product(
-                    name: "Repository",
-                    package: "Repository"
-                )
             ]
         ),
         .target(
