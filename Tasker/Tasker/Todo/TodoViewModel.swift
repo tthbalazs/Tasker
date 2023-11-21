@@ -10,35 +10,22 @@ import Foundation
 import ProjectInterface
 
 @MainActor
-final class TodoViewModel<Container: RemoteStorable>: ObservableObject {
+final class TodoViewModel: ObservableObject {
     @Inject private var projectManager: ProjectManagerInterface
-    @Published private(set) var todos: [Todo<Project>] = []
+    @Published private(set) var todos: [Todo] = []
     
-    func createTodo(_ project: Project?) {
-        let newTodo = Todo(container: project, name: "Todo - \(todos.count)")
+    func createTodo(_ project: Project) async throws {
+        let newTodo = Todo(parentId: project.id, name: "Todo - \(todos.count)")
+        print("NewTodo: ", newTodo)
+        print("\n")
         
-        Task {
-            try projectManager.save(newTodo)
-            getTodos(project)
-        }
+            try await projectManager.save(parentObject: project, object: newTodo)
+            try await getTodos(project)
     }
     
-    func getTodos(_ project: Project?) {
-        Task {
-            self.todos = try await projectManager
-                .getAll(
-                    parentObject: project,
-                    objectsOfType: Todo<Project>.self
-                )
-                .map {
-                    Todo(container: project, id: $0.id, name: $0.name)
-                }
-            print("\n")
-            print("project: ", project as Any )
-            print("\n")
-            
-            print("self.todos: ", todos)
-        }
+    func getTodos(_ project: Project) async throws {
+            print("Project: ", project)
+            self.todos = try await projectManager.getAll(parentObject: project, objectsOfType: Todo.self)
     }
 }
 

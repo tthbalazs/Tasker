@@ -25,7 +25,7 @@ final class HomeViewModel: ObservableObject {
         
         Task {
             do {
-                try projectManager.save(newProject)
+                try await projectManager.save(newProject)
                 getProjects()
             } catch {
                 print(error)
@@ -37,6 +37,8 @@ final class HomeViewModel: ObservableObject {
         Task {
             do {
                 self.projects = try await projectManager.getAll(objectsOfType: Project.self)
+                
+                print("\nProjects: ", projects)
             } catch {
                 print(error)
             }

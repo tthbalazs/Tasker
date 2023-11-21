@@ -10,19 +10,20 @@ import Foundation
 import ProjectInterface
 
 @MainActor
-final class TaskViewModel<Container: RemoteStorable>: ObservableObject {
+final class TaskViewModel: ObservableObject {
     @Inject private var projectManager: ProjectManagerInterface
     
-    @Published private(set) var todos: [Todo<Container>] = []
+    @Published private(set) var todos: [Todo] = []
     
-    func createTodo(todo: Todo<Container>) {
-        let newTodo = Todo(container: todo, name: "Todo - \(todos.count)")
+    func createTodo(todo: Todo) {
+        let newTodo = Todo(parentId: todo.id, name: "Todo - \(todos.count)")
         
         Task {
             do {
                 print("NewTodo: ", newTodo)
                 print("\n")
-                try projectManager.save(newTodo)
+                
+                try await projectManager.save(parentObject: todo, object: newTodo)
                 getTodos(todo: todo)
             } catch {
                 print(error)
@@ -30,24 +31,15 @@ final class TaskViewModel<Container: RemoteStorable>: ObservableObject {
         }
     }
     
-    func getTodos(todo: Todo<Container>) {
+    func getTodos(todo: Todo) {
         Task {
             do {
-                let firebaseTodos = try await projectManager
-                    .getAll(parentObject: todo, objectsOfType: Todo<Container>.self)
-                
+                let firebaseTodos = try await projectManager.getAll(parentObject: todo, objectsOfType: Todo.self)
                 self.todos = firebaseTodos
                 
                 print("\n")
-                print("container: ", todo as Any )
-                print("\n")
                 print("self.todos: ", todos)
-                
             }
         }
-    }
-    
-    private func getContainer<T: RemoteStorable>(_ containter: T) -> T {
-        containter
     }
 }

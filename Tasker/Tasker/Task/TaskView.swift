@@ -9,9 +9,9 @@ import SwiftUI
 import ProjectInterface
 
 
-struct TaskView<Container: RemoteStorable> : View {
-    @StateObject private var viewModel = TaskViewModel<Container>()
-    let task: Todo<Container>
+struct TaskView: View {
+    @StateObject private var viewModel = TaskViewModel()
+    let task: Todo
     
     var body: some View {
         VStack {

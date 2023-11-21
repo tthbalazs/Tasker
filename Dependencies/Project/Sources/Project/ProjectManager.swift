@@ -12,33 +12,11 @@ import RepositoryInterface
 final class ProjectManager: ProjectManagerInterface {
     @Inject private var repositoryManager: RepositoryManagerInterface
     
-    func save<Object: RemoteStorable>(_ object: Object) throws {
-        try repositoryManager.save(object)
+    func save<ParentObject: CombinedStorable, Object: CombinedStorable>(parentObject: ParentObject? = nil, object: Object) async throws {
+        try await repositoryManager.save(parentObject: parentObject, object: object)
     }
     
-    func getAll<ParentObject: RemoteStorable, Object: RemoteStorable>(parentObject: ParentObject? = nil, objectsOfType type: Object.Type) async throws -> [Object] {
+    func getAll<ParentObject: CombinedStorable, Object: CombinedStorable>(parentObject: ParentObject? = nil, objectsOfType type: Object.Type) async throws -> [Object] {
         try await repositoryManager.getAll(parentObject: parentObject, objectsOfType: type)
     }
 }
-
-
-/*
- func save<ParentObject: RemoteStorable, Object: RemoteStorable>(
-     parentObject: ParentObject? = nil,
-     object: Object
- ) async throws {
-     try await repositoryManager.save(parentObject: parentObject, object: object)
- }
- 
- func saveTask<Object: RemoteStorable>(object: Object) throws {
-     try repositoryManager.saveTask(object: object)
- }
- 
- 
- func getAll<ParentObject: RemoteStorable, Object: RemoteStorable>(
-     parentObject: ParentObject? = nil,
-     objectsOfType type: Object.Type
- ) async throws -> [Object] {
-     try await repositoryManager.getAll(parentObject: parentObject, objectsOfType: type)
- }
- */

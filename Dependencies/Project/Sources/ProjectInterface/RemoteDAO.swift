@@ -9,7 +9,6 @@ import Foundation
 import CloudDatabaseInterface
 
 public struct ProjectRemoteDAO: RemoteDAO {
-    public typealias Container = ProjectRemoteDAO
     public static let collection: String = "Projects"
         
     public let id: String
@@ -29,28 +28,26 @@ public struct ProjectRemoteDAO: RemoteDAO {
     }
 }
 
-public struct TodoRemoteDAO<Container: RemoteDAO>: RemoteDAO {
+public struct TodoRemoteDAO: RemoteDAO {
     public static var collection: String { "Todo" }
-    public var container: Container?
+    public var parentId: String?
     
     public let id: String
     public let name: String
     
     public init(
+        parentId: String?,
         id: String,
         name: String
     ) {
+        self.parentId = parentId
         self.id = id
         self.name = name
     }
     
-    public init(from todo: Todo<Container.Model>) {
+    public init(from todo: Todo) {
+        self.parentId = todo.parentId
         self.id = todo.id
         self.name = todo.name
-        self.container = todo.container.map {
-            let some = Container(from: $0)
-            print("Container in remoteDAO: ", some)
-            return some
-        }
     }
 }

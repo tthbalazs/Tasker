@@ -9,8 +9,8 @@ import SwiftUI
 import ProjectInterface
 
 struct TodoView : View {
-    @StateObject private var viewModel = TodoViewModel<Project>()
-    let project: Project?
+    @StateObject private var viewModel = TodoViewModel()
+    let project: Project
     
     var body: some View {
         VStack {
@@ -30,13 +30,19 @@ struct TodoView : View {
             Spacer()
             
             Button("Add todo") {
-                viewModel.createTodo(project)
+                Task {
+                    do {
+                        try await viewModel.createTodo(project)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
             }
         }
         .navigationTitle("Todo")
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear {
-            viewModel.getTodos(project)
+        .task {
+            try? await viewModel.getTodos(project)
         }
     }
 }
