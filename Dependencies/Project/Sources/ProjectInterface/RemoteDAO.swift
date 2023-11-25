@@ -1,6 +1,6 @@
 //
 //  RemoteDAO.swift
-//  
+//
 //
 //  Created by MaTooSens on 27/10/2023.
 //
@@ -8,9 +8,7 @@
 import Foundation
 import CloudDatabaseInterface
 
-public struct ProjectRemoteDAO: RemoteDAO {
-    public static let collection: String = "Projects"
-        
+public struct ProjectRemoteDAO: RemoteDAOInterface {
     public let id: String
     public let name: String
     
@@ -28,26 +26,51 @@ public struct ProjectRemoteDAO: RemoteDAO {
     }
 }
 
-public struct TodoRemoteDAO: RemoteDAO {
-    public static var collection: String { "Todo" }
-    public var parentId: String?
-    
+public struct TodoRemoteDAO<Container: CombinedStorable>: RemoteDAOInterface {
     public let id: String
     public let name: String
     
     public init(
-        parentId: String?,
         id: String,
         name: String
     ) {
-        self.parentId = parentId
         self.id = id
         self.name = name
     }
     
-    public init(from todo: Todo) {
-        self.parentId = todo.parentId
+    public init(from todo: Todo<Container>) {
         self.id = todo.id
         self.name = todo.name
     }
 }
+
+
+
+/*
+ public struct TodoRemoteDAO<Container: RemoteDAO>: RemoteDAO {
+     public static var collection: String { "Todo" }
+     public var container: Container?
+     
+     public let id: String
+     public let name: String
+     
+     public init(
+         id: String,
+         name: String
+     ) {
+         self.id = id
+         self.name = name
+     }
+     
+     public init(from todo: Todo<Container.Model>) {
+         self.id = todo.id
+         self.name = todo.name
+         self.container = todo.container.map {
+             let some = Container(from: $0)
+             print("Container in remoteDAO: ", some)
+             return some
+         }
+     }
+ }
+
+ */

@@ -9,25 +9,25 @@ import DependencyInjection
 import Foundation
 import ProjectInterface
 
-@MainActor
-final class TodoViewModel: ObservableObject {
-    @Inject private var projectManager: ProjectManagerInterface
-    @Published private(set) var todos: [Todo] = []
-    
-    func createTodo(_ project: Project) async throws {
-        let newTodo = Todo(parentId: project.id, name: "Todo - \(todos.count)")
-        print("NewTodo: ", newTodo)
-        print("\n")
-        
-            try await projectManager.save(parentObject: project, object: newTodo)
-            try await getTodos(project)
-    }
-    
-    func getTodos(_ project: Project) async throws {
-            print("Project: ", project)
-            self.todos = try await projectManager.getAll(parentObject: project, objectsOfType: Todo.self)
-    }
-}
+//@MainActor
+//final class TodoViewModel: ObservableObject {
+//    @Inject private var projectManager: ProjectManagerInterface
+//    @Published private(set) var todos: [Todo] = []
+//    
+//    func createTodo(_ project: Project) async throws {
+//        let newTodo = Todo(parentId: project.id, name: "Todo - \(todos.count)")
+//        print("NewTodo: ", newTodo)
+//        print("\n")
+//        
+//            try await projectManager.save(parentObject: project, object: newTodo)
+//            try await getTodos(project)
+//    }
+//    
+//    func getTodos(_ project: Project) async throws {
+//            print("Project: ", project)
+//            self.todos = try await projectManager.getAll(parentObject: project, objectsOfType: Todo.self)
+//    }
+//}
 
 /*
  @MainActor

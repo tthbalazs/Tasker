@@ -8,44 +8,44 @@
 import SwiftUI
 import ProjectInterface
 
-struct TodoView : View {
-    @StateObject private var viewModel = TodoViewModel()
-    let project: Project
-    
-    var body: some View {
-        VStack {
-            ForEach(viewModel.todos) { todo in
-                NavigationLink {
-                    TaskView(task: todo)
-                } label: {
-                    VStack {
-                        Text(todo.name)
-                        Text(todo.id)
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
-                    }
-                }
-            }
-            
-            Spacer()
-            
-            Button("Add todo") {
-                Task {
-                    do {
-                        try await viewModel.createTodo(project)
-                    } catch {
-                        print(error.localizedDescription)
-                    }
-                }
-            }
-        }
-        .navigationTitle("Todo")
-        .navigationBarTitleDisplayMode(.inline)
-        .task {
-            try? await viewModel.getTodos(project)
-        }
-    }
-}
+//struct TodoView : View {
+//    @StateObject private var viewModel = TodoViewModel()
+//    let project: Project
+//    
+//    var body: some View {
+//        VStack {
+//            ForEach(viewModel.todos) { todo in
+//                NavigationLink {
+//                    TaskView(task: todo)
+//                } label: {
+//                    VStack {
+//                        Text(todo.name)
+//                        Text(todo.id)
+//                            .font(.footnote)
+//                            .foregroundStyle(.secondary)
+//                    }
+//                }
+//            }
+//            
+//            Spacer()
+//            
+//            Button("Add todo") {
+//                Task {
+//                    do {
+//                        try await viewModel.createTodo(project)
+//                    } catch {
+//                        print(error.localizedDescription)
+//                    }
+//                }
+//            }
+//        }
+//        .navigationTitle("Todo")
+//        .navigationBarTitleDisplayMode(.inline)
+//        .task {
+//            try? await viewModel.getTodos(project)
+//        }
+//    }
+//}
 
 //#Preview {
 //

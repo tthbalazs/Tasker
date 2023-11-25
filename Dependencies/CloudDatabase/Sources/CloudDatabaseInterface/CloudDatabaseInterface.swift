@@ -1,6 +1,6 @@
 //
 //  CloudDatabaseInterface.swift
-//  
+//
 //
 //  Created by MaTooSens on 25/10/2023.
 //
@@ -10,35 +10,82 @@ import FirebaseFirestore
 
 public protocol DataConvertible: Identifiable, Codable, Equatable, Hashable { }
 
-public protocol DAOInterface: DataConvertible, DocRef {
-    associatedtype Model: Storable
-    init(from: Model)
-    
-    static var collection: String { get }
+public protocol RemoteDAOInterface: DataConvertible {
+    associatedtype RemoteModel: RemoteStorable
+    init(from: RemoteModel)
 }
 
-public protocol Storable: DataConvertible, DocRef {
-    associatedtype RemoteDAO: DAOInterface
+public protocol RemoteStorable: DataConvertible  {
+    associatedtype RemoteDAO: RemoteDAOInterface
     init(from: RemoteDAO)
 }
 
-public protocol DocRef {
-    var parentId: String? { get set }
-}
 
-public extension DocRef {
-    var parentId: String? {
-        get { nil }
-        set { }
-    }
-}
+
+
+//
+//public protocol DAOReference {
+//    associatedtype Container: DAOInterface
+//    var container: Container? { get set }
+//}
+//
+//public extension DAOReference {
+//    var container: Container? {
+//            get { nil }
+//            set {}
+//        }
+//}
+//
+//public protocol StorableReference {
+//    associatedtype Container: Storable
+//    var container: Container? { get set }
+//}
+//
+//public extension StorableReference {
+//    var container: Container? {
+//            get { nil }
+//            set {}
+//        }
+//}
+
+
+
+
+//public extension StorableReference {
+//    func buildDocRef<T: Storable>(_ container: T) -> String {
+//        var components: [String] = []
+//        var currentContainer: (any Storable)? = container.container
+//
+//        while currentContainer != nil {
+//            if let container = currentContainer {
+//                let path = getPath(container)
+//                components.insert("\(path)", at: 0)
+//
+//                currentContainer = container.container
+//            } else {
+//                currentContainer = nil
+//            }
+//        }
+//
+//        return components.joined(separator: "/")
+//    }
+//
+//    private func getPath<T: Storable>(_ container: T) -> String {
+//        let documentID = String(describing: container.id)
+//        let collection = T.RemoteDAO.collection
+//
+//        return "\(collection)/\(documentID)"
+//    }
+//}
 
 public protocol CloudDatabaseManagerInterface {
-    func save<ParentObject: Storable, Object: Storable>(parentObject: ParentObject?, object: Object) throws
-    func getAll<ParentObject: Storable, Object: Storable>(parentObject: ParentObject?, objectsOfType type: Object.Type) async throws -> [Object]
+    func save<Object: RemoteStorable>(_ object: Object) throws
+    func getAll<ParentObject: RemoteStorable, Object: RemoteStorable>(parentObject: ParentObject?, objectsOfType type: Object.Type) async throws -> [Object]
 }
 
 public enum DatabaseError: Error {
+    case unableToFindDocRef
+    
     case unableToCreate
     case unableToRead
 }

@@ -20,3 +20,25 @@ final class ProjectManager: ProjectManagerInterface {
         try await repositoryManager.getAll(parentObject: parentObject, objectsOfType: type)
     }
 }
+
+
+/*
+ func save<ParentObject: RemoteStorable, Object: RemoteStorable>(
+     parentObject: ParentObject? = nil,
+     object: Object
+ ) async throws {
+     try await repositoryManager.save(parentObject: parentObject, object: object)
+ }
+ 
+ func saveTask<Object: RemoteStorable>(object: Object) throws {
+     try repositoryManager.saveTask(object: object)
+ }
+ 
+ 
+ func getAll<ParentObject: RemoteStorable, Object: RemoteStorable>(
+     parentObject: ParentObject? = nil,
+     objectsOfType type: Object.Type
+ ) async throws -> [Object] {
+     try await repositoryManager.getAll(parentObject: parentObject, objectsOfType: type)
+ }
+ */

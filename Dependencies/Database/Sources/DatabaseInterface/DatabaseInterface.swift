@@ -1,6 +1,6 @@
 //
 //  DatabaseInterface.swift
-//  
+//
 //
 //  Created by MaTooSens on 25/10/2023.
 //
@@ -8,22 +8,31 @@
 import Foundation
 import RealmSwift
 
-public protocol DAOInterface: Object, Identifiable, DAOReference {
-    associatedtype Model: Storable
-    init(from: Model)
+public protocol LocalDAOInterface: Object, DAOReference {
+    associatedtype LocalModel: LocalStorable
+    init(from: LocalModel)
 }
 
-public protocol Storable: Identifiable, Codable, Equatable, StorableReference {
-    associatedtype LocalDAO: DAOInterface
+public protocol LocalStorable: Identifiable, Codable, Equatable, StorableReference {
+    associatedtype LocalDAO: LocalDAOInterface
     init(from: LocalDAO)
 }
 
+// MARK: Reference -
 public protocol DAOReference {
-    associatedtype Contents: DAOInterface
+    associatedtype Container: LocalDAOInterface // ParentObject
+    associatedtype Contents: LocalDAOInterface  // ChildObject
+    
+    var container: LinkingObjects<Container> { get set }
     var contents: List<Contents> { get set }
 }
 
 public extension DAOReference {
+    var container: LinkingObjects<Container> {
+        get { LinkingObjects(fromType: Container.self, property: "") }
+        set { }
+    }
+    
     var contents: List<Contents> {
         get { List<Contents>() }
         set { }
@@ -31,7 +40,7 @@ public extension DAOReference {
 }
 
 public protocol StorableReference {
-    associatedtype Contents: Storable
+    associatedtype Contents: LocalStorable
     var contents: [Contents]? { get set }
 }
 
@@ -42,13 +51,13 @@ public extension StorableReference {
     }
 }
 
+// MARK: ManagerInterface -
 public protocol DatabaseManagerInterface {
-//    func save<Object: Storable>(object: Object) async throws
-    func save<ParentObject: Storable, Object: Storable>(parentObject: ParentObject?, object: Object) async throws
-//    func getAll<Object: Storable>() async throws -> [Object]
-    func getAll<ParentObject: Storable, Object: Storable>(parentObject: ParentObject?) async throws -> [Object] 
+    func save<ParentObject: LocalStorable, Object: LocalStorable>(parentObject: ParentObject?, object: Object) async throws
+    func getAll<ParentObject: LocalStorable, Object: LocalStorable>(parentObject: ParentObject?) async throws -> [Object]
 }
 
+// MARK: Errors -
 public enum DatabaseError: Error {
     case unableToOpenRealm
     case unableToSave
