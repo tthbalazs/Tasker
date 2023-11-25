@@ -24,7 +24,6 @@ let package = Package(
     dependencies: [
         .package(path: "../DependencyInjection"),
         .package(path: "../FirebaseSupport"),
-        .package(path: "../Utilities")
     ],
     targets: [
         .target(
@@ -44,10 +43,6 @@ let package = Package(
                     name: "DependencyInjection",
                     package: "DependencyInjection"
                 ),
-                .product(
-                    name: "Utilities",
-                    package: "Utilities"
-                )
             ]
         ),
         .target(

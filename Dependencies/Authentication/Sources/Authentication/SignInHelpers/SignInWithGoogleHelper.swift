@@ -8,7 +8,6 @@
 import FirebaseCore
 import Foundation
 import GoogleSignIn
-import Utilities
 
 struct SignInWithGoogleHelperResult {
     let idToken: String
@@ -59,5 +58,17 @@ extension SignInWithGoogleHelper {
                 return "Unable to fetch identity token"
             }
         }
+    }
+}
+
+// MARK: - Utilities
+
+extension UIApplication {
+    static var rootViewController: UIViewController? {
+        shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first { $0.isKeyWindow }?
+            .rootViewController
     }
 }

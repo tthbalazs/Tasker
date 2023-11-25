@@ -7,7 +7,6 @@
 
 import AuthenticationServices
 import CryptoKit
-import Utilities
 
 struct SignInWithAppleHelperResult {
     let idToken: String
