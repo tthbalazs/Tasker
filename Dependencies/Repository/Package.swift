@@ -25,7 +25,6 @@ let package = Package(
         .package(path: "../CloudDatabase"),
         .package(path: "../Connectivity"),
         .package(path: "../Database"),
-        .package(path: "../DependencyInjection"),
         .package(path: "../Synchronizer")
     ],
     targets: [
@@ -54,10 +53,6 @@ let package = Package(
             name: "Repository",
             dependencies: [
                 "RepositoryInterface",
-                .product(
-                    name: "DependencyInjection",
-                    package: "DependencyInjection"
-                )
             ]
         ),
         .target(

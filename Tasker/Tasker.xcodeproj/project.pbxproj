@@ -16,15 +16,6 @@
 		BD6AE1172AE930AF00D49439 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD6AE1162AE930AF00D49439 /* Assets.xcassets */; };
 		BD6AE11A2AE930AF00D49439 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD6AE1192AE930AF00D49439 /* Preview Assets.xcassets */; };
 		BD6AE1222AE9317400D49439 /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = BD6AE1212AE9317400D49439 /* Dependencies */; };
-		BD6AE1262AE931C900D49439 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6AE1142AE930AE00D49439 /* ContentView.swift */; };
-		BD6AE1272AE931C900D49439 /* TaskerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6AE1122AE930AE00D49439 /* TaskerApp.swift */; };
-		BD6AE1292AE931C900D49439 /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = BD6AE1242AE931C900D49439 /* Dependencies */; };
-		BD6AE12B2AE931C900D49439 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD6AE1192AE930AF00D49439 /* Preview Assets.xcassets */; };
-		BD6AE12C2AE931C900D49439 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD6AE1162AE930AF00D49439 /* Assets.xcassets */; };
-		BD6AE1332AE931E400D49439 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6AE1322AE931E400D49439 /* Assembly.swift */; };
-		BD6AE1352AE931EB00D49439 /* AssemblyShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6AE1342AE931EB00D49439 /* AssemblyShared.swift */; };
-		BD6AE1382AE931F900D49439 /* AssemblyMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6AE1362AE931F000D49439 /* AssemblyMocks.swift */; };
-		BD6AE1392AE931FA00D49439 /* AssemblyShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6AE1342AE931EB00D49439 /* AssemblyShared.swift */; };
 		BDBD481F2AE935A800CF0A6F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDBD481E2AE935A800CF0A6F /* GoogleService-Info.plist */; };
 		BDE01BD12AEBE33900714FDD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE01BD02AEBE33900714FDD /* HomeViewModel.swift */; };
 		BDE01BD32AEBE34000714FDD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE01BD22AEBE34000714FDD /* HomeView.swift */; };
@@ -42,10 +33,6 @@
 		BD6AE1142AE930AE00D49439 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BD6AE1162AE930AF00D49439 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD6AE1192AE930AF00D49439 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BD6AE1302AE931C900D49439 /* Tasker-Mocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tasker-Mocks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BD6AE1322AE931E400D49439 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
-		BD6AE1342AE931EB00D49439 /* AssemblyShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyShared.swift; sourceTree = "<group>"; };
-		BD6AE1362AE931F000D49439 /* AssemblyMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyMocks.swift; sourceTree = "<group>"; };
 		BDBD481E2AE935A800CF0A6F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BDE01BD02AEBE33900714FDD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		BDE01BD22AEBE34000714FDD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -59,14 +46,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD6AE1222AE9317400D49439 /* Dependencies in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BD6AE1282AE931C900D49439 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BD6AE1292AE931C900D49439 /* Dependencies in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				BD6AE10F2AE930AE00D49439 /* Tasker.app */,
-				BD6AE1302AE931C900D49439 /* Tasker-Mocks.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,7 +92,6 @@
 				BD6AE1122AE930AE00D49439 /* TaskerApp.swift */,
 				BD6AE1142AE930AE00D49439 /* ContentView.swift */,
 				BDBD481E2AE935A800CF0A6F /* GoogleService-Info.plist */,
-				BD6AE1312AE931D800D49439 /* Assemblies */,
 				BDF35CAB2AF9A93B006A74C9 /* Navigation */,
 				BDE01BCF2AEBE32200714FDD /* Home */,
 				BD1077402AEC4BE600B10DD0 /* Todo */,
@@ -131,16 +108,6 @@
 				BD6AE1192AE930AF00D49439 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		BD6AE1312AE931D800D49439 /* Assemblies */ = {
-			isa = PBXGroup;
-			children = (
-				BD6AE1322AE931E400D49439 /* Assembly.swift */,
-				BD6AE1342AE931EB00D49439 /* AssemblyShared.swift */,
-				BD6AE1362AE931F000D49439 /* AssemblyMocks.swift */,
-			);
-			path = Assemblies;
 			sourceTree = "<group>";
 		};
 		BDE01BCF2AEBE32200714FDD /* Home */ = {
@@ -184,26 +151,6 @@
 			productReference = BD6AE10F2AE930AE00D49439 /* Tasker.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BD6AE1232AE931C900D49439 /* Tasker-Mocks */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BD6AE12D2AE931C900D49439 /* Build configuration list for PBXNativeTarget "Tasker-Mocks" */;
-			buildPhases = (
-				BD6AE1252AE931C900D49439 /* Sources */,
-				BD6AE1282AE931C900D49439 /* Frameworks */,
-				BD6AE12A2AE931C900D49439 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Tasker-Mocks";
-			packageProductDependencies = (
-				BD6AE1242AE931C900D49439 /* Dependencies */,
-			);
-			productName = Tasker;
-			productReference = BD6AE1302AE931C900D49439 /* Tasker-Mocks.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -236,7 +183,6 @@
 			projectRoot = "";
 			targets = (
 				BD6AE10E2AE930AE00D49439 /* Tasker */,
-				BD6AE1232AE931C900D49439 /* Tasker-Mocks */,
 			);
 		};
 /* End PBXProject section */
@@ -252,15 +198,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BD6AE12A2AE931C900D49439 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BD6AE12B2AE931C900D49439 /* Preview Assets.xcassets in Resources */,
-				BD6AE12C2AE931C900D49439 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -269,10 +206,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD6AE1152AE930AE00D49439 /* ContentView.swift in Sources */,
-				BD6AE1332AE931E400D49439 /* Assembly.swift in Sources */,
 				BD1077442AEC4BFC00B10DD0 /* TodoView.swift in Sources */,
 				BDF35CAD2AF9A94C006A74C9 /* NavigationViewModel.swift in Sources */,
-				BD6AE1352AE931EB00D49439 /* AssemblyShared.swift in Sources */,
 				BDE01BD32AEBE34000714FDD /* HomeView.swift in Sources */,
 				BDE01BD12AEBE33900714FDD /* HomeViewModel.swift in Sources */,
 				BD1077422AEC4BF500B10DD0 /* TodoViewModel.swift in Sources */,
@@ -280,17 +215,6 @@
 				BD1077472AEC552000B10DD0 /* TaskViewModel.swift in Sources */,
 				BDF35CAF2AF9A95E006A74C9 /* NavigationStackView.swift in Sources */,
 				BD6AE1132AE930AE00D49439 /* TaskerApp.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BD6AE1252AE931C900D49439 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BD6AE1262AE931C900D49439 /* ContentView.swift in Sources */,
-				BD6AE1382AE931F900D49439 /* AssemblyMocks.swift in Sources */,
-				BD6AE1392AE931FA00D49439 /* AssemblyShared.swift in Sources */,
-				BD6AE1272AE931C900D49439 /* TaskerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,64 +398,6 @@
 			};
 			name = Release;
 		};
-		BD6AE12E2AE931C900D49439 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Tasker/Preview Content\"";
-				DEVELOPMENT_TEAM = 8S5QQT5ZUQ;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matoosens.Tasker;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		BD6AE12F2AE931C900D49439 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Tasker/Preview Content\"";
-				DEVELOPMENT_TEAM = 8S5QQT5ZUQ;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matoosens.Tasker;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -553,15 +419,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BD6AE12D2AE931C900D49439 /* Build configuration list for PBXNativeTarget "Tasker-Mocks" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BD6AE12E2AE931C900D49439 /* Debug */,
-				BD6AE12F2AE931C900D49439 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
@@ -573,10 +430,6 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		BD6AE1212AE9317400D49439 /* Dependencies */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Dependencies;
-		};
-		BD6AE1242AE931C900D49439 /* Dependencies */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Dependencies;
 		};

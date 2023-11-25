@@ -8,18 +8,18 @@
 import AuthenticationInterface
 import FirebaseAuth
 
-final class AuthenticationManager: AuthenticationManagerInterface {
-    var userID: String = ""
-    
+public final class AuthenticationManager: AuthenticationManagerInterface {
+    public var userID: String = ""
+
     private let auth = Auth.auth()
     private let signInWithAppleHelper   = SignInWithAppleHelper()
     private let signInWithGoogleHelper  = SignInWithGoogleHelper()
     
-    init() {
+    public init() {
         userStateListener()
     }
     
-    func signOut() throws {
+    public func signOut() throws {
         do {
             try auth.signOut()
         } catch {
@@ -40,7 +40,7 @@ final class AuthenticationManager: AuthenticationManagerInterface {
 
 // MARK: Manage user
 extension AuthenticationManager {
-    func signUp(withEmail email: String, password: String) async throws {
+    public func signUp(withEmail email: String, password: String) async throws {
         do {
             try await auth.createUser(withEmail: email, password: password)
         } catch {
@@ -48,7 +48,7 @@ extension AuthenticationManager {
         }
     }
     
-    func signIn(withEmail email: String, password: String) async throws -> AuthenticationDataResult {
+    public func signIn(withEmail email: String, password: String) async throws -> AuthenticationDataResult {
         do {
             let user = try await auth.signIn(withEmail: email, password: password).user
             
@@ -60,7 +60,7 @@ extension AuthenticationManager {
         }
     }
     
-    func updateEmail(email: String, password: String, newEmail: String) async throws {
+    public func updateEmail(email: String, password: String, newEmail: String) async throws {
         let user = try await reauthenticateUser(withEmail: email, password: password)
         
         do {
@@ -70,7 +70,7 @@ extension AuthenticationManager {
         }
     }
     
-    func sendVerifactionEmail() async throws {
+    public func sendVerifactionEmail() async throws {
         let user = try getCurrentUser()
         
         do {
@@ -80,7 +80,7 @@ extension AuthenticationManager {
         }
     }
     
-    func updatePassword(withEmail email: String, password: String, newPassword: String) async throws {
+    public func updatePassword(withEmail email: String, password: String, newPassword: String) async throws {
         let user = try await reauthenticateUser(withEmail: email, password: password)
         
         do {
@@ -90,7 +90,7 @@ extension AuthenticationManager {
         }
     }
     
-    func sendPasswordReset(withEmail email: String) async throws {
+    public func sendPasswordReset(withEmail email: String) async throws {
         do {
             try await auth.sendPasswordReset(withEmail: email)
         } catch {
@@ -98,7 +98,7 @@ extension AuthenticationManager {
         }
     }
     
-    func deleteAccount(withEmail email: String, password: String) async throws {
+    public func deleteAccount(withEmail email: String, password: String) async throws {
         let user = try await reauthenticateUser(withEmail: email, password: password)
         
         do {
@@ -129,17 +129,17 @@ extension AuthenticationManager {
 
 // MARK: Sign in SSO
 extension AuthenticationManager {
-    func signInWithApple() async throws -> AuthenticationDataResult {
+    public func signInWithApple() async throws -> AuthenticationDataResult {
         let credential = try await appleCredential()
         return try await signIn(credential: credential)
     }
     
-    func signInWithGoogle() async throws -> AuthenticationDataResult {
+    public func signInWithGoogle() async throws -> AuthenticationDataResult {
         let credential = try await googleCredential()
         return try await signIn(credential: credential)
     }
     
-    func deleteAccountSSO() async throws {
+    public func deleteAccountSSO() async throws {
         let user = try await reauthenticateUserSSO()
         
         do {
@@ -185,7 +185,7 @@ extension AuthenticationManager {
 
 // MARK: Sign in Anonymously
 extension AuthenticationManager {
-    func signInAnonymously() async throws -> AuthenticationDataResult {
+    public func signInAnonymously() async throws -> AuthenticationDataResult {
         do {
             let user = try await auth.signInAnonymously().user
             return AuthenticationDataResult(user: user)
@@ -194,17 +194,17 @@ extension AuthenticationManager {
         }
     }
     
-    func linkEmail(result: SignInWithEmailHelperResult) async throws -> AuthenticationDataResult {
+    public func linkEmail(result: SignInWithEmailHelperResult) async throws -> AuthenticationDataResult {
         let credential = EmailAuthProvider.credential(withSignInResult: result)
         return try await linkCredential(credential: credential)
     }
     
-    func linkApple() async throws -> AuthenticationDataResult {
+    public func linkApple() async throws -> AuthenticationDataResult {
         let credential = try await appleCredential()
         return try await linkCredential(credential: credential)
     }
     
-    func linkGoogle() async throws -> AuthenticationDataResult {
+    public func linkGoogle() async throws -> AuthenticationDataResult {
         let credential = try await googleCredential()
         return try await linkCredential(credential: credential)
     }

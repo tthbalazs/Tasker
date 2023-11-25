@@ -22,7 +22,6 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(path: "../DependencyInjection"),
         .package(url: "https://github.com/realm/realm-swift", exact: "10.43.0")
     ],
     targets: [
@@ -39,10 +38,6 @@ let package = Package(
             name: "Database",
             dependencies: [
                 "DatabaseInterface",
-                .product(
-                    name: "DependencyInjection",
-                    package: "DependencyInjection"
-                )
             ]
         ),
         .target(

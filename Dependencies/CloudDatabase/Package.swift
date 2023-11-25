@@ -22,7 +22,6 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(path: "../DependencyInjection"),
         .package(path: "../FirebaseSupport")
     ],
     targets: [
@@ -34,10 +33,6 @@ let package = Package(
             name: "CloudDatabase",
             dependencies: [
                 "CloudDatabaseInterface",
-                .product(
-                    name: "DependencyInjection",
-                    package: "DependencyInjection"
-                ),
                 .product(
                     name: "FirebaseSupport",
                     package: "FirebaseSupport"

@@ -27,9 +27,11 @@ fileprivate struct DAOFactory {
     }
 }
 
-final class CloudDatabaseManager: CloudDatabaseManagerInterface {
+public final class CloudDatabaseManager {
+    public init() {}
+
     private lazy var database = Firestore.firestore()
-    
+
     private lazy var encoder: Firestore.Encoder = {
         let encoder = Firestore.Encoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
@@ -41,6 +43,17 @@ final class CloudDatabaseManager: CloudDatabaseManagerInterface {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         return decoder
     }()
+}
+
+extension CloudDatabaseManager: CloudDatabaseManagerInterface {
+    public func save<Object: RemoteStorable>(_ object: Object) throws {
+        
+    }
+    
+    public func getAll<ParentObject: RemoteStorable, Object: RemoteStorable>(parentObject: ParentObject?, objectsOfType type: Object.Type) async throws -> [Object] {
+        []
+    }
+}
 //
 //    private func collectionReference<T: DAOInterface>(_ container: T) -> CollectionReference {
 //        if container.container != nil {
@@ -79,20 +92,7 @@ final class CloudDatabaseManager: CloudDatabaseManagerInterface {
 //
 //        return "\(collection)/\(documentID)"
 //    }
-}
 
-
-// MARK: CRUD
-extension CloudDatabaseManager {
-    func save<Object: RemoteStorable>(_ object: Object) throws {
-        
-    }
-    
-    func getAll<ParentObject: RemoteStorable, Object: RemoteStorable>(parentObject: ParentObject?, objectsOfType type: Object.Type) async throws -> [Object] {
-        
-        []
-    }
-}
 
 //    func objectExist<Object: Storable>(object: Object) async throws -> Bool {
 //        try await database.collection(Object.RemoteDAO.collection).document(String(describing: object.id)).getDocument().exists

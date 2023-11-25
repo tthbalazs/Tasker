@@ -11,9 +11,9 @@ let package = Package(
         .library(
             name: "Dependencies",
             targets: ["Dependencies"]
-        ),
+        )
     ],
-    dependencies: [ 
+    dependencies: [
         .package(path: "Authentication"),
         .package(path: "Project")
     ],
@@ -36,8 +36,8 @@ let package = Package(
                 .product(
                     name: "ProjectMocks",
                     package: "Project"
-                ),
+                )
             ]
-        ),
+        )
     ]
 )

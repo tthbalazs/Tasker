@@ -5,21 +5,21 @@
 //  Created by MaTooSens on 27/10/2023.
 //
 
-import DependencyInjection
 import Foundation
+import Project
 import ProjectInterface
-
 
 @MainActor
 final class HomeViewModel: ObservableObject {
-    @Inject private var projectManager: ProjectManagerInterface
+    private var projectManager: ProjectManagerInterface
     
     @Published private(set) var projects: [Project] = []
     @Published var project: Project?
     
     @Published private(set) var todos: [Todo<Project>] = []
     
-    init() {
+    init(projectManager: ProjectManagerInterface) {
+        self.projectManager = projectManager
         getProjects()
     }
     

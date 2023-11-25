@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import Project
 import ProjectInterface
+import Repository
+import CloudDatabase
+import Database
 
 struct HomeView: View {
-    @StateObject private var viewModel = HomeViewModel()
-    
+    @StateObject var viewModel: HomeViewModel
+
     var body: some View {
         VStack {
             Text("Project: \(viewModel.project?.name ?? "")")
@@ -54,7 +58,16 @@ struct HomeView: View {
 
 #Preview {
     NavigationStack {
-        HomeView()
+        HomeView(
+            viewModel: HomeViewModel(
+                projectManager: ProjectManager(
+                    repositoryManager: RepositoryManager(
+                        cloudDatabaseManager: CloudDatabaseManager(),
+                        databaseManager: DatabaseManager()
+                    )
+                )
+            )
+        )
     }
 }
 

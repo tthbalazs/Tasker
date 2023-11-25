@@ -13,28 +13,30 @@ fileprivate struct DAOFactory {
         guard let dao = dao as? Object.LocalDAO else {
             fatalError()
         }
-        
+
         return Object(from: dao)
     }
-    
+
     static func initializeDAO<Object: LocalStorable, DAO: LocalDAOInterface>(from object: Object) -> DAO {
         guard let object = object as? DAO.LocalModel else {
             fatalError()
         }
-        
+
         return DAO(from: object)
     }
 }
 
-actor DatabaseManager: DatabaseManagerInterface {
+public actor DatabaseManager: DatabaseManagerInterface {
+    public init() {}
+
     private var realm: Realm?
-    
+
     private func openRealmIfNeeded() async throws {
         if realm == nil {
             try await initializeRealm()
         }
     }
-    
+
     private func initializeRealm() async throws {
         do {
             self.realm = try await Realm(actor: self)
@@ -86,7 +88,7 @@ extension DatabaseManager {
 //        }
 //    }
     
-    func save<ParentObject: LocalStorable, Object: LocalStorable>(parentObject: ParentObject? = nil, object: Object) async throws {
+    public func save<ParentObject: LocalStorable, Object: LocalStorable>(parentObject: ParentObject? = nil, object: Object) async throws {
         try await openRealmIfNeeded()
         let objectDAO: Object.LocalDAO = DAOFactory.initializeDAO(from: object)
         
@@ -140,7 +142,7 @@ extension DatabaseManager {
 
 // MARK: Reate
 extension DatabaseManager {
-    func getAll<ParentObject: LocalStorable, Object: LocalStorable>(parentObject: ParentObject? = nil) async throws -> [Object] {
+    public func getAll<ParentObject: LocalStorable, Object: LocalStorable>(parentObject: ParentObject? = nil) async throws -> [Object] {
         try await openRealmIfNeeded()
         
         if let parentObject = parentObject {

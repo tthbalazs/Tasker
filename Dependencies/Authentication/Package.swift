@@ -22,7 +22,6 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(path: "../DependencyInjection"),
         .package(path: "../FirebaseSupport"),
     ],
     targets: [
@@ -39,10 +38,6 @@ let package = Package(
             name: "Authentication",
             dependencies: [
                 "AuthenticationInterface",
-                .product(
-                    name: "DependencyInjection",
-                    package: "DependencyInjection"
-                ),
             ]
         ),
         .target(

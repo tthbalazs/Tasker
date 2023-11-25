@@ -5,18 +5,21 @@
 //  Created by MaTooSens on 27/10/2023.
 //
 
-import DependencyInjection
 import ProjectInterface
 import RepositoryInterface
 
-final class ProjectManager: ProjectManagerInterface {
-    @Inject private var repositoryManager: RepositoryManagerInterface
+public final class ProjectManager: ProjectManagerInterface {
+    private var repositoryManager: RepositoryManagerInterface
+
+    public init(repositoryManager: RepositoryManagerInterface) {
+        self.repositoryManager = repositoryManager
+    }
     
-    func save<ParentObject: CombinedStorable, Object: CombinedStorable>(parentObject: ParentObject? = nil, object: Object) async throws {
+    public func save<ParentObject: CombinedStorable, Object: CombinedStorable>(parentObject: ParentObject? = nil, object: Object) async throws {
         try await repositoryManager.save(parentObject: parentObject, object: object)
     }
     
-    func getAll<ParentObject: CombinedStorable, Object: CombinedStorable>(parentObject: ParentObject? = nil, objectsOfType type: Object.Type) async throws -> [Object] {
+    public func getAll<ParentObject: CombinedStorable, Object: CombinedStorable>(parentObject: ParentObject? = nil, objectsOfType type: Object.Type) async throws -> [Object] {
         try await repositoryManager.getAll(parentObject: parentObject, objectsOfType: type)
     }
 }
